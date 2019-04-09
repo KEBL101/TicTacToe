@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Scanner;
 
 import javax.imageio.ImageIO;
@@ -82,6 +83,11 @@ public class TicTacToe implements Runnable {
 	 */
 
 	public TicTacToe() {
+		try {
+			System.out.println("Your IP: " + InetAddress.getLocalHost().getHostAddress().trim());
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
 		System.out.println("Please input the IP: ");
 		ip = scanner.nextLine();
 		System.out.println("Please input the port: ");
